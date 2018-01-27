@@ -1,0 +1,5 @@
+file_to_backup=
+user=root
+server=
+password=
+remote_location=
