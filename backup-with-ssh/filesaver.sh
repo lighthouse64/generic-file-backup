@@ -5,7 +5,7 @@ cd "$thisdir"
 chmod +x "$thisdir"/sshpass
 if [ ! -f "sshpass" ]; then
 	echo "sshpass is required, but it is missing from this directory."
-	exit
+	exit 1
 fi
 
 #setting variables based on the config file
@@ -18,32 +18,32 @@ remote_location=$(grep "remote_location=" conf.txt | sed 's/remote_location=//')
 function loop(){	
 	if [ ! -f "$file_to_backup" ]; then
 		echo "the file you wish to backup does not exist"
-		exit
+		exit 1
 	fi
 	
 	if [ "$file_to_backup" == "" ]; then
 		echo "the file_to_backup variable is missing or misconfigured"
-		exit
+		exit 1
 	fi
 	
 	if [ "$server" == "" ]; then
 		echo "the server variable is missing or misconfigured"
-		exit
+		exit 1
 	fi
 	
 	if [ "$user" == "" ]; then
 		echo "the user variable is missing or misconfigured"
-		exit
+		exit 1
 	fi
 	
 	if [ "$password" == "" ]; then
 		echo "the password variable is missing or misconfigured"
-		exit
+		exit 1
 	fi
 	
 	if [ "$remote_location" == "" ]; then
 		echo "the remote_location variable is missing or misconfigured"
-		exit
+		exit 1
 	fi
 	
 	#actual code
